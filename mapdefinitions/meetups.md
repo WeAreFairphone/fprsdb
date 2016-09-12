@@ -1,10 +1,21 @@
-|ATTRIBUTE_NAME      |DATA_TYPE  |ATTRIBUTE_DESCRIPTION     |
-|--------------------|-----------|--------------------------|
-|start_date          |int(6)     |Start date (YYYYMMDD)     |
-|start_time          |int(4)     |Start time (HHMM)         |
-|end_date            |int(6)     |End date (YYYYMMDD)       |
-|end_time            |int(4)     |End time (HHMM)           |
-|latitude            |float      |Latitude                  |
-|longitude           |float      |Longitude                 |
-|event_name          |char(100)  |Name of the event         |
-|website             |char(200)  |Link to event page        |
+These are example JSONs we expect to receive from FP servers:
+
+##Meetups
+
+```JSON
+{
+  "startYear": "1970",
+  "startMonth": "12",
+  "startDay" : "31",
+  "startHour" : "16",
+  "startMinute" : "16",
+  "endYear" : "1971",
+  "endMonth" : "1",
+  "endDay" : "1",
+  "endHour" : "17",
+  "endMinute" : "17",
+  "latitude" : "48.210033",
+  "longitude" : "16.363449",
+  "eventName" : "The example party",
+  "website" : "https://fairphone.com/meetups/The-example-party/12"
+}
