@@ -1,6 +1,6 @@
-These are example JSONs we expect to receive from FP servers:
+These are example JSONs we expect to receive
 
-##Meetups
+##Fairphone
 
 ```JSON
 {
@@ -8,16 +8,16 @@ These are example JSONs we expect to receive from FP servers:
   [
     {
       "eventName" : "The example party",
-      "startYear"   : "1970",
-      "startMonth": "12",
-      "startDay" : "31",
-      "startHour" : "16",
-      "startMinute" : "16",
-      "endYear" : "1971",
-      "endMonth" : "1",
-      "endDay" : "1",
-      "endHour" : "17",
-      "endMinute" : "17",
+      "startYear"   : 1970,
+      "startMonth": 12,
+      "startDay" : 31,
+      "startHour" : 16,
+      "startMinute" : 16,
+      "endYear" : 1971,
+      "endMonth" : 1,
+      "endDay" : 1,
+      "endHour" : 17,
+      "endMinute" : 17,
       "lat_lng" : [48.210033,16.363449],
       "website" : "https://fairphone.com/meetups/The-example-party/12"
     },
@@ -27,9 +27,10 @@ These are example JSONs we expect to receive from FP servers:
   [
     {
       "cityName" : "Foo City",
-      "lat_lng" : "[48.210033,16.363449]",
+      "lat_lng" : [48.210033,16.363449],
       "website" : "https://fairphone.com/angels/foo-city/36"
     },
     {}
   ]
 }
+```
