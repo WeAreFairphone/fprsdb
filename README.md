@@ -1,52 +1,100 @@
-These are example JSONs we expect to receive
+# API suggested specs
 
-##Fairphone
+These are JSON-like specs for the data we expect to receive.
 
-```JSON
+JSON properties are written in the following format: `"key" [quantifier]: valueType`.
+
+- `"key"`: literal key name, lowercaseCamelCase
+- `quantifier`:
+  - [absence]: property is **obligatory**
+  - `*`: 0 or more array items; property is optional
+  - `+`: 1 or more array items; property is **obligatory**
+  - `?`: 0 or 1; property is optional
+  - `{n}`: exactly _n_ ocurrences; property is **obligatory**
+- `valueType`:
+  - `UppercaseCamelCase`: data type
+  - `lowercase_snake_case`: String format
+
+
+## Fairphone
+
+### Angels endpoint
+
+```JavaScript
 {
-  "meetups" :
-  [
+  "angels" *: [
     {
-      "eventName" : "The example party",
-      "startDate" : "2016-10-13T14:00+02:00",
-      "endDate" : "2016-10-13T18:00+02:00",
-      "lat_lng" : [48.210033,16.363449],
-      "website" : "https://fairphone.com/meetups/The-example-party/12"
+      "cityName": String,
+      "countryName" ?: String,
+      "coordinates": {
+        "latitude": Float,
+        "longitude": Float
+      },
+      "email": email,
+      "people" *: [
+        {
+          "name" ?: String,
+          "forumNick" ?: String
+        },
+        {...}
+      ]
     },
-    {}  
-  ],
-  "angels" :
-  [
-    {
-      "cityName" : "Foo City",
-      "lat_lng" : [48.210033,16.363449],
-      "website" : "https://fairphone.com/angels/foo-city/36"
-    },
-    {}
+    {...}
   ]
 }
 ```
-##T-Mobile
-```JSON
+
+
+### Meetups endpoint
+
+```JavaScript
 {
-  "shops" :
-  [
+  "meetups" *: [
     {
-      "shopName" : "Example Shop",
-      "lat_lng" : [48.210033,16.363449],
-      "openingHours" :
-      {
-        "monday" : "9:15/18:30",
-        "tuesday" : "9:15/18:30",
-        "wednesday" : "9:15/18:30",
-        "thursday" : "9:15/18:30",
-        "friday" : "9:15/18:30",
-        "saturday" : "9:15/18:30",
-        "sunday" : ""
+      "eventName": String,
+      "startDate": unix_time,
+      "endDate": unix_time,
+      "coordinates": {
+        "latitude": Float,
+        "longitude": Float
       },
-      "website" : "www.t-mobile.at/shops/example_shop",
-      "telNr" : "0676 2000"
+      "website": url
     },
-    {}
+    {...}
   ]
 }
+```
+
+
+## T-Mobile
+
+### Shops endpoint
+```JavaScript
+{
+  "shops" *: [
+    {
+      "shopName": String,
+      "shopAddress" ?: String,
+      "coordinates": {
+        "latitude": Float,
+        "longitude": Float
+      },
+      "openingHours" {7}: [ // Starts on monday
+        {
+          "openingTime": time,
+          "closingTime": time
+        },
+        {...}
+      ],
+      "website" ?: url,
+      "phoneNumber" ?: phone_number
+    },
+    {...}
+  ]
+}
+```
+
+- `shopAddress`: readable address for showing it to the user.
+
+- `time`: language-agnostic 24-hours value with minutes. Examples: `9:15`, `20.00`. Avoid: `19hrs`.
+- `phone_number`: phone number for showing it to the user. Only numbers and spaces. Avoid special characters. Example: `0676 123 45 67`.
