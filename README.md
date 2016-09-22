@@ -54,6 +54,7 @@ JSON properties are written in the following format: `"key" [quantifier]: valueT
       "eventName": String,
       "startDate": unix_time,
       "endDate": unix_time,
+      "address" ?: String,
       "coordinates": {
         "latitude": Float,
         "longitude": Float
@@ -64,6 +65,8 @@ JSON properties are written in the following format: `"key" [quantifier]: valueT
   ]
 }
 ```
+
+- `address`: readable address for showing it to the user.
 
 
 ## T-Mobile
