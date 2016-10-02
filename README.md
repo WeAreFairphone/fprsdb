@@ -52,8 +52,8 @@ JSON properties are written in the following format: `"key" [quantifier]: valueT
   "meetups" *: [
     {
       "eventName": String,
-      "startDate": unix_time,
-      "endDate": unix_time,
+      "startDate": date,
+      "endDate": date,
       "address" ?: String,
       "coordinates": {
         "latitude": Float,
@@ -67,6 +67,8 @@ JSON properties are written in the following format: `"key" [quantifier]: valueT
 ```
 
 - `address`: readable address for showing it to the user.
+
+- `date`: formated as UNIX time (seconds since the Epoch) or ISO-8601. Examples: `1474505000`, `2016-09-22T17:45:37Z`, `2016-09-22` (only date).
 
 
 ## T-Mobile
